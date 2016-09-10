@@ -1,4 +1,8 @@
 export default function() {
+  this.urlPrefix = 'http://localhost:3000';
+
+  this.get('/goals');
+  this.post('/goals');
 
   // These comments are here to help you get started. Feel free to delete them.
 

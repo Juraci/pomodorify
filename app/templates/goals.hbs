@@ -1,0 +1,9 @@
+{{outlet}}
+
+<ul class='list-group m-t-2'>
+  {{#each model as |goal|}}
+    <div class='row'>
+      <li class='list-group-item goal col-md-6 offset-md-3'>{{goal.description}}</li>
+    </div>
+  {{/each}}
+</ul>

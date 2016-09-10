@@ -1,0 +1,9 @@
+<div calss='row'>
+<form class='form goal-creation' {{action 'createGoal' on='submit'}}>
+  <div class='form-group col-md-4 offset-md-3'>
+    <label for='goal' class='sr-only'>Goal</label>
+    {{input type='text' value=goal required='required' id='goal' class='form-control' placeholder='Add a goal'}}
+  </div>
+  <button type='submit' id='create' class='btn btn-primary col-md-2'>Add</button>
+</form>
+</div>
