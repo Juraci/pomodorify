@@ -29,7 +29,8 @@ module.exports = function(deployTarget) {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     bucket: 'pomodorify',
-    region: 'sa-east-1'
+    region: 'sa-east-1',
+    allowOverwrite: true
   };
 
   if (deployTarget === 'development') {
