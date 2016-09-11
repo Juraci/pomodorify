@@ -1,5 +1,7 @@
 export default function(server) {
-  server.createList('goal', 5);
+  server.logging = true;
+  server.create('goal', { description: 'Feel comfortable with Node.js development' });
+  server.create('goal', { description: 'Feel comfortable with front end development' });
 
   /*
     Seed your development database using your factories.
