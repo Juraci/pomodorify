@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | create goal');
 test('creating a goal', (assert) => {
   visit('/goals');
 
-  fillIn('#goal', 'Feel comfortable with Node.js backend development');
+  fillIn('#input-goal', 'Feel comfortable with Node.js backend development');
   click('#create');
 
   andThen(() => {

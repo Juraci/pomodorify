@@ -1,9 +1,6 @@
-<div calss='row'>
-<form class='form goal-creation' {{action 'createGoal' on='submit'}}>
-  <div class='form-group col-md-4 offset-md-3'>
-    <label for='goal' class='sr-only'>Goal</label>
-    {{input type='text' value=goal required='required' id='goal' class='form-control' placeholder='Add a goal'}}
-  </div>
-  <button type='submit' id='create' class='btn btn-primary col-md-2'>Add</button>
-</form>
-</div>
+{{#paper-form as |form|}}
+  {{form.input id='goal' required=true label="Goal" maxlength=100 passThru=(hash rows=5) value=goal onChange=(action (mut goal))}}
+  {{#paper-button id='create' disabled=form.isInvalid onClick="createGoal"}}
+    Add
+  {{/paper-button}}
+{{/paper-form}}
