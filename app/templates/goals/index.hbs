@@ -1,6 +1,0 @@
-{{#paper-form as |form|}}
-  {{form.input id='goal' required=true label="Goal" maxlength=100 passThru=(hash rows=5) value=goal onChange=(action (mut goal))}}
-  {{#paper-button id='create' disabled=form.isInvalid onClick="createGoal"}}
-    Add
-  {{/paper-button}}
-{{/paper-form}}

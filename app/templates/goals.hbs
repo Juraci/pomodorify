@@ -1,14 +1,19 @@
 <div class='flex-offset-5 main-content'>
   <div class='layout-row'>
-    {{outlet}}
+    {{#paper-form as |form|}}
+        {{form.input id='goal' required=true label="Goal" maxlength=100 passThru=(hash rows=5) value=goal onChange=(action (mut goal))}}
+      {{#paper-button id='create' disabled=form.isInvalid onClick="createGoal"}}
+        Add
+      {{/paper-button}}
+    {{/paper-form}}
   </div>
   <div class='layout-row'>
     {{#paper-content class="md-whiteframe-z5"}}
       {{#paper-list}}
-        {{#each model as |goal|}}
+        {{#each model as |g|}}
           {{#paper-item class='md-3-line goal'}}
             <div class='md-list-item-text'>
-              <p>{{goal.description}}</p>
+              <p>{{g.description}}</p>
             </div>
           {{/paper-item}}
           {{paper-divider}}
