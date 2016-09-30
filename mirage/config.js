@@ -3,6 +3,7 @@ export default function() {
 
   this.get('/goals');
   this.post('/goals');
+  this.del('/goals/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

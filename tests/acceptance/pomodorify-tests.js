@@ -16,3 +16,14 @@ test('creating a goal', (assert) => {
     assert.equal(find('.goal:eq(0) p').text(), description);
   });
 });
+
+test('deleting a goal', (assert) => {
+  server.create('goal', { description: 'Feel comfortable with Node.js development' });
+
+  visit('/goals');
+  click('.goal:eq(0) .delete');
+
+  andThen(() => {
+    assert.equal(find('.goal').length, 0);
+  });
+});

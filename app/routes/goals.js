@@ -13,6 +13,18 @@ export default Ember.Route.extend({
         .catch((err) => {
           Ember.Logger.error(`Error while trying to save goal:\n${err}`);
         });
+    },
+
+    deleteGoal(goal) {
+      goal.deleteRecord();
+      goal.save()
+        .then(() => {
+          Ember.Logger.warn('Goal deleted!');
+          this.transitionTo('goals');
+        })
+        .catch(err => {
+          Ember.Logger.error(err);
+        });
     }
   },
 
