@@ -11,15 +11,7 @@
     {{#paper-content class="md-whiteframe-z5"}}
       {{#paper-list}}
         {{#each model as |g|}}
-          {{#paper-item class='md-3-line goal'}}
-              <div class='md-list-item-text'>
-                <p>{{g.description}}</p>
-              </div>
-              <div class='delete' {{action 'deleteGoal' g}}>
-                {{paper-icon "delete" size=18}}
-              </div>
-          {{/paper-item}}
-          {{paper-divider}}
+          {{list-item goal=g delete="deleteGoal"}}
         {{/each}}
       {{/paper-list}}
     {{/paper-content}}
