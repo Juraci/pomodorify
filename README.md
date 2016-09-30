@@ -1,7 +1,8 @@
 # Pomodorify
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+[![Build Status](https://travis-ci.org/Juraci/pomodorify.svg?branch=master)](https://travis-ci.org/Juraci/pomodorify)
+
+This app's intention is to augment the perception of progress towards learning a new skill by using the pomodoro technique.
 
 ## Prerequisites
 
