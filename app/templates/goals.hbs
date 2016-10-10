@@ -1,5 +1,5 @@
 <div class='flex-offset-5 main-content'>
-  <div class='layout-row'>
+  <div class='layout-row layout-align-center-center'>
     {{#paper-form as |form|}}
         {{form.input id='goal' required=true label="Goal" maxlength=100 passThru=(hash rows=5) value=goal onChange=(action (mut goal))}}
       {{#paper-button id='create' disabled=form.isInvalid onClick="createGoal"}}
@@ -7,7 +7,7 @@
       {{/paper-button}}
     {{/paper-form}}
   </div>
-  <div class='layout-row layout-align-start-center'>
+  <div class='layout-row layout-align-center-center'>
     {{#paper-content class="md-whiteframe-z5"}}
       {{#paper-list}}
         {{#each model as |g|}}
