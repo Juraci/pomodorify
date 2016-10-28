@@ -5,6 +5,8 @@ export default function() {
   this.post('/goals');
   this.del('/goals/:id');
 
+  this.post('/tasks');
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

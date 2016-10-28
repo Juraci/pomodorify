@@ -27,3 +27,18 @@ test('deleting a goal', (assert) => {
     assert.equal(find('.goal').length, 0);
   });
 });
+
+test('creating a task related to a goal', (assert) => {
+  const goal = server.create('goal', { description: 'Feel comfortable with Node.js development' });
+  const description = 'Complete Node.js codeschool lvl 1';
+  visit('/tasks');
+
+  fillIn('#input-task', description);
+  click('md-checkbox:eq(0)');
+  click('#create');
+
+  andThen(() => {
+    assert.equal(find('.task').length, 1);
+    assert.equal(find('.task:eq(0) p').text(), description);
+  });
+});

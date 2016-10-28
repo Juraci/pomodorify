@@ -1,0 +1,18 @@
+<div class='flex-offset-4 main-content'>
+  <div class='layout-column layout-align-center-center'>
+    {{#paper-form as |form|}}
+      {{form.input id='task' required=true label='Task' maxlength=60  value=task onChange=(action (mut task))}}
+      {{#paper-content class="md-whiteframe-z1 list-demo list-controls-demo"}}
+        {{#paper-list}}
+          {{#paper-subheader class="md-no-sticky"}}Related Goals{{/paper-subheader}}
+          {{#each model.goals as |goal|}}
+              {{checkbox-wrapper goal=goal toggle='toggleGoal'}}
+          {{/each}}
+        {{/paper-list}}
+      {{/paper-content}}
+      {{#paper-button raised=true id='create' disabled=form.isInvalid onClick="createTask"}}
+        Add
+      {{/paper-button}}
+    {{/paper-form}}
+  </div>
+</div>
