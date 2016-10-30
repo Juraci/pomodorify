@@ -40,7 +40,8 @@ export default Ember.Route.extend({
 
   model() {
     return Ember.RSVP.hash({
-      goals: this.store.findAll('goal')
+      goals: this.store.findAll('goal'),
+      tasks: this.store.findAll('task')
     });
   }
 });

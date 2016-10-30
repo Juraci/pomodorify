@@ -3,9 +3,11 @@ export default function() {
 
   this.get('/goals');
   this.post('/goals');
+  this.patch('/goals/:id');
   this.del('/goals/:id');
 
   this.post('/tasks');
+  this.get('/tasks');
 
   // These comments are here to help you get started. Feel free to delete them.
 
