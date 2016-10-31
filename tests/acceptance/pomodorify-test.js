@@ -32,7 +32,7 @@ test('deleting a goal', (assert) => {
 test('creating a task related to a goal', (assert) => {
   server.create('goal', { description: 'Feel comfortable with Node.js development' });
   const description = 'Complete Node.js codeschool lvl 1';
-  visit('/tasks');
+  visit('/');
 
   click('#add-task');
   fillIn('#input-task', description);
