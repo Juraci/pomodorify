@@ -1,6 +1,6 @@
 <div class='flex-offset-4 main-content'>
   {{#if showDialog}}
-    {{#paper-dialog fullscreen=true onClose="closeDialog"}}
+    {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeDialog"}}
         {{#paper-form as |form|}}
           {{#paper-dialog-content}}
             {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
@@ -26,7 +26,7 @@
     {{#paper-button id='add-task' fab=true raised=true onClick="showDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
   </div>
   <div class='layout-row layout-align-center-center'>
-    {{#paper-content class="md-whiteframe-z5"}}
+    {{#paper-content class="md-whiteframe-z2"}}
       {{#paper-list}}
         {{#each model.tasks as |task|}}
           {{#paper-item class='md-3-line'}}
@@ -34,6 +34,7 @@
               <p>{{task.description}}</p>
             </div>
           {{/paper-item}}
+          {{paper-divider}}
         {{/each}}
       {{/paper-list}}
     {{/paper-content}}
