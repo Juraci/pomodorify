@@ -33,6 +33,7 @@ test('creating a task related to a goal', (assert) => {
   const description = 'Complete Node.js codeschool lvl 1';
   visit('/tasks');
 
+  click('#add-task');
   fillIn('#input-task', description);
   click('md-checkbox:eq(0)');
   click('#create');
