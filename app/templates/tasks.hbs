@@ -1,6 +1,6 @@
 <div class='flex-offset-4 main-content'>
-  {{#if showDialog}}
-    {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeDialog"}}
+  {{#if showTaskDialog}}
+    {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeTaskDialog"}}
         {{#paper-form as |form|}}
           {{#paper-dialog-content}}
             {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
@@ -14,7 +14,7 @@
             {{/paper-content}}
             {{/paper-dialog-content}}
           {{#paper-dialog-actions}}
-            {{#paper-button primary=true onClick="closeDialog"}}cancel{{/paper-button}}
+            {{#paper-button primary=true onClick="closeTaskDialog"}}cancel{{/paper-button}}
             {{#paper-button primary=true id='create' disabled=form.isInvalid onClick="createTask"}}
               Add
             {{/paper-button}}
@@ -23,7 +23,7 @@
     {{/paper-dialog}}
   {{/if}}
   <div class='layout-row layout-align-center-center'>
-    {{#paper-button id='add-task' fab=true raised=true onClick="showDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+    {{#paper-button id='add-task' fab=true raised=true onClick="openTaskDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
   </div>
   <div class='layout-row layout-align-center-center'>
     {{#paper-content class="md-whiteframe-z2"}}

@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     },
 
     createTask() {
-      this.controller.set('showDialog', false);
+      this.controller.set('showTaskDialog', false);
       const taskDescription =  this.controller.get('task');
       let taskRecord = this.store.createRecord('task', {
         description: taskDescription,
@@ -37,11 +37,13 @@ export default Ember.Route.extend({
           Ember.Logger.warn(`Error while trying to save the task:\n${err}`);
         });
     },
-    showDialog() {
-      this.controller.set('showDialog', true);
+
+    openTaskDialog() {
+      this.controller.set('showTaskDialog', true);
     },
-    closeDialog() {
-      this.controller.set('showDialog', false);
+
+    closeTaskDialog() {
+      this.controller.set('showTaskDialog', false);
     }
   },
 

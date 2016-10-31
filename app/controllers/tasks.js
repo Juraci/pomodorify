@@ -2,5 +2,5 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   selectedGoals: [],
-  showDialog: false,
+  showTaskDialog: false
 });
