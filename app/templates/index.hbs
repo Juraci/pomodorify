@@ -1,0 +1,29 @@
+<div class='flex-offset-4 main-content'>
+{{#if showGoalDialog}}
+    {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeGoalDialog"}}
+      {{#paper-form as |form|}}
+          {{#paper-dialog-content}}
+            {{form.input id='goal' required=true label="Goal" maxlength=60 block=true passThru=(hash rows=5) value=goal onChange=(action (mut goal))}}
+          {{/paper-dialog-content}}
+          {{#paper-dialog-actions}}
+              {{#paper-button primary=true onClick="closeGoalDialog"}}cancel{{/paper-button}}
+              {{#paper-button id='create' disabled=form.isInvalid onClick="createGoal"}}
+                Add
+              {{/paper-button}}
+          {{/paper-dialog-actions}}
+      {{/paper-form}}
+    {{/paper-dialog}}
+  {{/if}}
+  <div class='layout-row layout-align-center-center'>
+    {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+  </div>
+  <div class='layout-row layout-align-center-center'>
+    {{#paper-content class="md-whiteframe-z2"}}
+      {{#paper-list}}
+        {{#each model as |g|}}
+          {{list-item goal=g delete="deleteGoal"}}
+        {{/each}}
+      {{/paper-list}}
+    {{/paper-content}}
+  </div>
+</div>

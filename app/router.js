@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('goals', function() {});
   this.route('tasks');
 });
 

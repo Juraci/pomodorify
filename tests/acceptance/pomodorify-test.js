@@ -6,8 +6,9 @@ moduleForAcceptance('Acceptance | create goal');
 test('creating a goal', (assert) => {
   const description = 'Feel comfortable with Node.js backend development';
 
-  visit('/goals');
+  visit('/');
 
+  click('#add-goal');
   fillIn('#input-goal', description);
   click('#create');
 
@@ -20,7 +21,7 @@ test('creating a goal', (assert) => {
 test('deleting a goal', (assert) => {
   server.create('goal', { description: 'Feel comfortable with Node.js development' });
 
-  visit('/goals');
+  visit('/');
   click('.goal:eq(0) .delete');
 
   andThen(() => {
