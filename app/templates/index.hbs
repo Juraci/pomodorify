@@ -25,8 +25,8 @@
             {{#each model.goals as |g|}}
               {{list-item
                 goal=g
-                openDialog="openTaskDialog"
-                delete="deleteGoal"
+                openDialog=(route-action "openTaskDialog")
+                delete=(route-action "deleteGoal")
               }}
             {{/each}}
           {{/paper-list}}
