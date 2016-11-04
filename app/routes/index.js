@@ -44,38 +44,38 @@ export default Ember.Route.extend({
 
     createTask() {
       this.controller.set('showTaskDialog', false);
+      if(!this.controller.get('currentGoal')) { return false; }
+      const goalId = this.controller.get('currentGoal.id');
+      const goal = this.get('store').peekRecord('goal', goalId);
+
       const taskDescription =  this.controller.get('task');
-      let taskRecord = this.store.createRecord('task', {
+      let taskRecord = this.get('store').createRecord('task', {
         description: taskDescription,
-      });
-      this.controller.get('selectedGoals').forEach(goal => {
-        taskRecord.get('goals').pushObject(goal);
+        goal
       });
       taskRecord.save()
         .then(() => {
           Ember.Logger.warn('Task saved!');
-          this.controller.get('selectedGoals').forEach(goal => {
-            goal.get('tasks').pushObject(taskRecord);
-            goal.save()
-              .then(() => {
-                Ember.Logger.warn('Goal updated');
-              })
-              .catch(err => {
-                Ember.Logger.warn(`Error while trying to update goal\n${err}`);
-              });
-          });
+          this.controller.set('task', null);
+          goal.get('tasks').pushObject(taskRecord);
+          return goal.save();
+        })
+        .then(() => {
+          Ember.Logger.warn(`Goal id: ${goal.get('id')} updated!`);
         })
         .catch(err => {
-          Ember.Logger.warn(`Error while trying to save the task:\n${err}`);
+          Ember.Logger.error(`Error while trying to save the task:\n${err}`);
         });
     },
 
-    openTaskDialog() {
+    openTaskDialog(goal) {
       this.controller.set('showTaskDialog', true);
+      this.controller.set('currentGoal', goal);
     },
 
     closeTaskDialog() {
       this.controller.set('showTaskDialog', false);
+      this.controller.set('currentGoal', null);
     }
   },
 

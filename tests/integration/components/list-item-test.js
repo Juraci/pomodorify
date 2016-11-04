@@ -9,6 +9,7 @@ moduleForComponent('list-item', 'Integration | Component | list item', {
 
   beforeEach() {
     goal = Ember.Object.create({
+      id: 136,
       description: 'Feel comfortable with Node.js development'
     });
   }
@@ -33,4 +34,17 @@ test('it should send a delete action passing the goal as parameter', function(as
   this.render(hbs`{{list-item goal=goal delete=routeAction}}`);
 
   this.$('.delete').click();
+});
+
+test('it should send addTask action passing the current goal as parameter', function(assert) {
+  assert.expect(1);
+
+  this.set('goal', goal);
+  this.set('routeAction', (item) => {
+    assert.equal(item.id, goal.get('id'));
+  });
+
+  this.render(hbs`{{list-item goal=goal openDialog=routeAction}}`);
+
+  this.$('.add-task').click();
 });

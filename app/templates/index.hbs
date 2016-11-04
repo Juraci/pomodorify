@@ -23,7 +23,11 @@
         {{#paper-content class="md-whiteframe-z2"}}
           {{#paper-list}}
             {{#each model.goals as |g|}}
-              {{list-item goal=g delete="deleteGoal"}}
+              {{list-item
+                goal=g
+                openDialog="openTaskDialog"
+                delete="deleteGoal"
+              }}
             {{/each}}
           {{/paper-list}}
         {{/paper-content}}
@@ -35,16 +39,6 @@
           {{#paper-form as |form|}}
             {{#paper-dialog-content}}
               {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
-              {{#if model.goals}}
-                {{#paper-content class="md-whiteframe-z1 list-demo list-controls-demo"}}
-                  {{#paper-list}}
-                    {{#paper-subheader class="md-no-sticky"}}Related Goals{{/paper-subheader}}
-                      {{#each model.goals as |goal|}}
-                        {{checkbox-wrapper goal=goal toggle='toggleGoal'}}
-                      {{/each}}
-                    {{/paper-list}}
-                  {{/paper-content}}
-              {{/if}}
             {{/paper-dialog-content}}
             {{#paper-dialog-actions}}
               {{#paper-button primary=true onClick="closeTaskDialog"}}cancel{{/paper-button}}
@@ -55,9 +49,6 @@
           {{/paper-form}}
         {{/paper-dialog}}
       {{/if}}
-      <div class='layout-row layout-align-center-center'>
-        {{#paper-button id='add-task' fab=true raised=true onClick="openTaskDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
-      </div>
       <div class='layout-row layout-align-center-center'>
         {{#paper-content class="md-whiteframe-z2"}}
           {{#paper-list}}

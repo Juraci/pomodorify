@@ -34,9 +34,8 @@ test('creating a task related to a goal', (assert) => {
   const description = 'Complete Node.js codeschool lvl 1';
   visit('/');
 
-  click('#add-task');
+  click('.goal:eq(0) .add-task');
   fillIn('#input-task', description);
-  click('md-checkbox:eq(0)');
   click('#create');
 
   andThen(() => {

@@ -2,6 +2,9 @@
   <div class='md-list-item-text'>
     <p>{{goal.description}}</p>
   </div>
+  <div class='add-task' {{action "openDialog"}}>
+    {{paper-icon "add" size=18}}
+  </div>
   <div class='delete' {{action "delete"}}>
     {{paper-icon "delete" size=18}}
   </div>
