@@ -4,11 +4,11 @@ export default Ember.Route.extend({
   actions: {
     createGoal() {
       this.controller.set('showGoalDialog', false);
-      let description = this.controller.get('goal');
+      let description = this.controller.get('goalDescription');
       let goal = this.store.createRecord('goal', { description: description });
       goal.save()
         .then(() => {
-          this.controller.set('goal', '');
+          this.controller.set('goalDescription', '');
         })
         .catch((err) => {
           Ember.Logger.error(`Error while trying to save goal:\n${err}`);
@@ -45,8 +45,10 @@ export default Ember.Route.extend({
     createTask() {
       this.controller.set('showTaskDialog', false);
       if(!this.controller.get('currentGoal')) { return false; }
-      const goalId = this.controller.get('currentGoal.id');
-      const goal = this.get('store').peekRecord('goal', goalId);
+      const goal = this.controller.get('currentGoal');
+
+      Ember.Logger.warn(`related goal ${goal.get('description')}`);
+      Ember.Logger.warn(`related goal ${goal.get('id')}`);
 
       const taskDescription =  this.controller.get('task');
       let taskRecord = this.get('store').createRecord('task', {
