@@ -17,22 +17,22 @@
         {{/paper-dialog}}
       {{/if}}
       <div class='layout-row layout-align-center-center'>
-        {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
-      </div>
-      <div class='layout-row layout-align-center-center'>
         {{#paper-content class="md-whiteframe-z2"}}
           {{#paper-list}}
             {{#each model.goals as |g|}}
               {{list-item
-                goal=g
-                openDialog=(route-action "openTaskDialog")
-                delete=(route-action "deleteGoal")
+              goal=g
+              openDialog=(route-action "openTaskDialog")
+              delete=(route-action "deleteGoal")
               }}
               {{paper-divider}}
             {{/each}}
           {{/paper-list}}
         {{/paper-content}}
       </div>
+        <div class='layout-row layout-align-center-center'>
+          {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+        </div>
     </div>
     <div class='layout-column flex'>
       {{#if showTaskDialog}}
