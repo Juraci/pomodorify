@@ -1,0 +1,29 @@
+  <div class='flex-30 flex-offset-5 flex-offset-xs-0 flex-xs-50'>
+    {{#if showTaskDialog}}
+      {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeTaskDialog"}}
+        {{#paper-form as |form|}}
+          {{#paper-dialog-content}}
+            {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
+          {{/paper-dialog-content}}
+          {{#paper-dialog-actions}}
+            {{#paper-button primary=true onClick="closeTaskDialog"}}cancel{{/paper-button}}
+              {{#paper-button primary=true id='create' disabled=form.isInvalid onClick="createTask"}}
+                Add
+              {{/paper-button}}
+            {{/paper-dialog-actions}}
+          {{/paper-form}}
+        {{/paper-dialog}}
+      {{/if}}
+      {{#paper-content class="md-whiteframe-z1"}}
+        {{#paper-list}}
+          {{#each model.tasks as |task|}}
+            {{#paper-item class='md-3-line'}}
+              <div class="md-list-item-text task">
+                <p>{{task.description}}</p>
+              </div>
+            {{/paper-item}}
+            {{paper-divider}}
+          {{/each}}
+        {{/paper-list}}
+      {{/paper-content}}
+</div>

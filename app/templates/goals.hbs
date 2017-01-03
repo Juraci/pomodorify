@@ -1,0 +1,31 @@
+<div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-50'>
+{{#if showGoalDialog}}
+  {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeGoalDialog"}}
+    {{#paper-form as |form|}}
+      {{#paper-dialog-content}}
+        {{form.input id='goal' required=true label="Goal" maxlength=60 block=true passThru=(hash rows=5) value=goalDescription onChange=(action (mut goalDescription))}}
+      {{/paper-dialog-content}}
+      {{#paper-dialog-actions}}
+        {{#paper-button primary=true onClick="closeGoalDialog"}}cancel{{/paper-button}}
+          {{#paper-button primary=true id='create' disabled=form.isInvalid onClick="createGoal"}}
+            Add
+          {{/paper-button}}
+        {{/paper-dialog-actions}}
+      {{/paper-form}}
+    {{/paper-dialog}}
+  {{/if}}
+  {{#paper-content class="md-whiteframe-z1"}}
+    {{#paper-list}}
+      {{#each model as |goal|}}
+        {{list-item goal=goal delete=(route-action "deleteGoal") }}
+        {{paper-divider}}
+      {{/each}}
+    {{/paper-list}}
+  {{/paper-content}}
+  <div class='layout-row layout-align-center-center'>
+    {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+  </div>
+</div>
+<div class='flex-30 flex-offset-5 flex-offset-xs-0 flex-xs-50'>
+  {{outlet}}
+</div>
