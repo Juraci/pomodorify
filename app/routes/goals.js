@@ -34,13 +34,9 @@ export default Ember.Route.extend({
       this.controller.set('showGoalDialog', false);
     },
 
-    toggleGoal(goal) {
-      if(this.controller.get('selectedGoals').contains(goal)) {
-        this.controller.get('selectedGoals').removeObject(goal);
-      } else {
-        this.controller.get('selectedGoals').pushObject(goal);
-      }
-    },
+    gotoTasks(goal) {
+      this.transitionTo('goals.goal.tasks', goal);
+    }
   },
 
   model() {

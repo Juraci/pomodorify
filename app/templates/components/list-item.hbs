@@ -1,8 +1,5 @@
-{{#paper-item class='md-3-line goal'}}
+{{#paper-item class='md-3-line goal' onClick=(action this.attrs.onClick goal)}}
   <div class='md-list-item-text'>
     <p>{{goal.description}}</p>
-  </div>
-  <div class='delete' {{action this.attrs.delete goal}}>
-    {{paper-icon "delete" size=18}}
   </div>
 {{/paper-item}}

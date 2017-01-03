@@ -21,6 +21,6 @@ test('it should render the item description', function(assert) {
   this.set('goal', goal);
   this.set('routeAction', () => {});
 
-  this.render(hbs`{{list-item goal=goal openDialog=routeAction delete=routeAction}}`);
+  this.render(hbs`{{list-item goal=goal onClick=routeAction}}`);
   assert.equal(this.$('p').text().trim(), goal.get('description'));
 });

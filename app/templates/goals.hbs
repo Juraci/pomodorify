@@ -17,8 +17,7 @@
   {{#paper-content class="md-whiteframe-z1"}}
     {{#paper-list}}
       {{#each model as |goal|}}
-        {{list-item goal=goal delete=(route-action "deleteGoal") }}
-        {{paper-divider}}
+        {{list-item goal=goal onClick=(route-action "gotoTasks") }}
       {{/each}}
     {{/paper-list}}
   {{/paper-content}}
