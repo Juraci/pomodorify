@@ -8,7 +8,9 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('goals', function() {
-
+    this.route('goal', { path: ':id' }, function() {
+      this.route('tasks');
+    });
   });
 });
 
