@@ -1,5 +1,5 @@
 {{#if showTaskDialog}}
-  {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeTaskDialog"}}
+  {{#paper-dialog class='flex-30' fullscreen=true clickOutsideToClose=true onClose="closeTaskDialog"}}
     {{#paper-form as |form|}}
       {{#paper-dialog-content}}
         {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
@@ -11,9 +11,9 @@
           {{/paper-button}}
         {{/paper-dialog-actions}}
       {{/paper-form}}
-    {{/paper-dialog}}
+  {{/paper-dialog}}
 {{/if}}
-  {{#if model}}
+{{#if model}}
     {{#paper-content class="md-whiteframe-z1"}}
       {{#paper-list}}
         {{#each model as |task|}}
@@ -26,9 +26,9 @@
         {{/each}}
       {{/paper-list}}
     {{/paper-content}}
-  {{else}}
+{{else}}
 
-  {{/if}}
-  <div class='layout-row layout-align-center-center'>
-    {{#paper-button id='add-task' fab=true raised=true onClick="openTaskDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
-  </div>
+{{/if}}
+<div class='layout-row layout-align-center-center'>
+  {{#paper-button id='add-task' fab=true raised=true onClick="openTaskDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+</div>

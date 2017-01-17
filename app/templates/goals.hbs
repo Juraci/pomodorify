@@ -1,6 +1,5 @@
-<div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-50'>
 {{#if showGoalDialog}}
-  {{#paper-dialog fullscreen=true clickOutsideToClose=true onClose="closeGoalDialog"}}
+  {{#paper-dialog class="flex-30" fullscreen=true clickOutsideToClose=true onClose="closeGoalDialog"}}
     {{#paper-form as |form|}}
       {{#paper-dialog-content}}
         {{form.input id='goal' required=true label="Goal" maxlength=60 block=true passThru=(hash rows=5) value=goalDescription onChange=(action (mut goalDescription))}}
@@ -14,6 +13,7 @@
       {{/paper-form}}
     {{/paper-dialog}}
   {{/if}}
+<div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-50'>
   {{#paper-content class="md-whiteframe-z1"}}
     {{#paper-list}}
       {{#each model as |goal|}}
