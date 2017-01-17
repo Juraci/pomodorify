@@ -1,7 +1,6 @@
 # pomodorify
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Amplifies the perception of progress towards a goal, powered by the use of pomodoro technique.
 
 ## Prerequisites
 
