@@ -2,22 +2,20 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    createTask() {
+    createTask(description) {
       this.controller.set('showTaskDialog', false);
       const goal = this.modelFor('goals.goal');
 
       Ember.Logger.warn(`related goal ${goal.get('description')}`);
       Ember.Logger.warn(`related goal ${goal.get('id')}`);
 
-      const taskDescription =  this.controller.get('task');
       let taskRecord = this.get('store').createRecord('task', {
-        description: taskDescription,
+        description,
         goal
       });
       taskRecord.save()
         .then(() => {
           Ember.Logger.warn('Task saved!');
-          this.controller.set('task', null);
           goal.get('tasks').pushObject(taskRecord);
           return goal.save();
         })

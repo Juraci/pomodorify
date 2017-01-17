@@ -1,0 +1,15 @@
+{{#if showDialog}}
+  {{#paper-dialog class="flex-30" fullscreen=true clickOutsideToClose=true onClose=(action this.attrs.closeDialog)}}
+    {{#paper-form as |form|}}
+      {{#paper-dialog-content}}
+        {{form.input id=inputId required=true label=label maxlength=60 block=true passThru=(hash rows=5) value=description onChange=(action (mut description))}}
+      {{/paper-dialog-content}}
+      {{#paper-dialog-actions}}
+        {{#paper-button primary=true onClick=(action this.attrs.closeDialog)}}cancel{{/paper-button}}
+          {{#paper-button primary=true id='create' disabled=form.isInvalid onClick=(action this.attrs.onSubmit description)}}
+            Create
+          {{/paper-button}}
+        {{/paper-dialog-actions}}
+    {{/paper-form}}
+  {{/paper-dialog}}
+{{/if}}

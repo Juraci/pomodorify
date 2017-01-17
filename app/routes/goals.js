@@ -2,13 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   actions: {
-    createGoal() {
+    createGoal(description) {
       this.controller.set('showGoalDialog', false);
-      let description = this.controller.get('goalDescription');
       let goal = this.store.createRecord('goal', { description: description });
       goal.save()
         .then(() => {
-          this.controller.set('goalDescription', '');
+          Ember.Logger.warn(`Goal ${description} saved`);
         })
         .catch((err) => {
           Ember.Logger.error(`Error while trying to save goal:\n${err}`);

@@ -1,18 +1,10 @@
-{{#if showTaskDialog}}
-  {{#paper-dialog class='flex-30' fullscreen=true clickOutsideToClose=true onClose="closeTaskDialog"}}
-    {{#paper-form as |form|}}
-      {{#paper-dialog-content}}
-        {{form.input id='task' required=true label='Task' maxlength=60 block=true value=task onChange=(action (mut task))}}
-      {{/paper-dialog-content}}
-      {{#paper-dialog-actions}}
-        {{#paper-button primary=true onClick="closeTaskDialog"}}cancel{{/paper-button}}
-          {{#paper-button primary=true id='create' disabled=form.isInvalid onClick="createTask"}}
-            Add
-          {{/paper-button}}
-        {{/paper-dialog-actions}}
-      {{/paper-form}}
-  {{/paper-dialog}}
-{{/if}}
+{{dialog-form
+  label='Task'
+  inputId='task'
+  showDialog=showTaskDialog
+  closeDialog=(route-action 'closeTaskDialog')
+  onSubmit=(route-action 'createTask')
+}}
 {{#if model}}
     {{#paper-content class="md-whiteframe-z1"}}
       {{#paper-list}}
