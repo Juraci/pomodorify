@@ -1,11 +1,11 @@
-{{dialog-form
-  showDialog=showGoalDialog
-  label='Goal'
-  inputId='goal'
-  closeDialog=(route-action 'closeGoalDialog')
-  onSubmit=(route-action 'createGoal')
-}}
 <div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-50'>
+  {{dialog-form
+    showDialog=showGoalDialog
+    label='Goal'
+    inputId='goal'
+    closeDialog=(route-action 'closeGoalDialog')
+    onSubmit=(route-action 'createGoal')
+  }}
   {{#paper-content class="md-whiteframe-z1"}}
     {{#paper-list}}
       {{#each model as |goal|}}
