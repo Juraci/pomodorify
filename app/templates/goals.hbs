@@ -6,13 +6,13 @@
     closeDialog=(route-action 'closeGoalDialog')
     onSubmit=(route-action 'createGoal')
   }}
-  {{#paper-content class="md-whiteframe-z1"}}
-    {{#paper-list}}
+  {{#paper-list}}
+    {{#paper-content class="md-whiteframe-z1"}}
       {{#each model as |goal|}}
         {{list-item goal=goal onClick=(route-action "gotoTasks") }}
       {{/each}}
-    {{/paper-list}}
-  {{/paper-content}}
+    {{/paper-content}}
+  {{/paper-list}}
   <div class='layout-row layout-align-center-center'>
     {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
   </div>

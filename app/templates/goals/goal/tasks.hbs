@@ -6,17 +6,18 @@
   onSubmit=(route-action 'createTask')
 }}
 {{#if model}}
-    {{#paper-content class="md-whiteframe-z1"}}
-      {{#paper-list}}
+    {{#paper-list}}
+      {{#paper-content class="md-whiteframe-z1"}}
         {{#each model as |task|}}
           {{#paper-item class='md-3-line'}}
             <div class="md-list-item-text task">
               <p>{{task.description}}</p>
             </div>
           {{/paper-item}}
+          {{paper-divider}}
         {{/each}}
-      {{/paper-list}}
-    {{/paper-content}}
+      {{/paper-content}}
+    {{/paper-list}}
 {{else}}
 
 {{/if}}
