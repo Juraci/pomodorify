@@ -29,12 +29,13 @@ skip('deleting a goal', (assert) => {
   });
 });
 
-skip('creating a task related to a goal', (assert) => {
+test('creating a task related to a goal', (assert) => {
   server.create('goal', { description: 'Feel comfortable with Node.js development' });
   const description = 'Complete Node.js codeschool lvl 1';
-  visit('/');
+  visit('/goals');
 
-  click('.goal:eq(0) .add-task');
+  click('.goal:eq(0) button');
+  click('#add-task');
   fillIn('#input-task', description);
   click('#create');
 
