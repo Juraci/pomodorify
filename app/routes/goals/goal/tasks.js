@@ -33,7 +33,19 @@ export default Ember.Route.extend({
 
     closeTaskDialog() {
       this.controller.set('showTaskDialog', false);
-    }
+    },
+
+    addPomodoro(task) {
+      task.incrementProperty('pomodoros');
+      task.save()
+        .then(() => {
+          Ember.Logger.warn('pomodoro unit added');
+        })
+        .catch((err) => {
+          Ember.Logger.error(`error while trying to add pomodoro unit ${err}`);
+        });
+    },
+
   },
 
   model() {

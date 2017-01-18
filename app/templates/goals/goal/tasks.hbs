@@ -9,10 +9,14 @@
     {{#paper-list}}
       {{#paper-content class="md-whiteframe-z1"}}
         {{#each model as |task|}}
-          {{#paper-item class='md-3-line'}}
-            <div class="md-list-item-text task">
+          {{#paper-item class='md-3-line task'}}
+            <div class='md-avatar total-pomodoros'>{{task.pomodoros}}</div>
+            <div class='md-list-item-text'>
               <p>{{task.description}}</p>
             </div>
+            {{#paper-button iconButton=true class='add-pomodoro-unit' onClick=(route-action 'addPomodoro' task)}}
+              {{paper-icon 'plus-one'}}
+            {{/paper-button}}
           {{/paper-item}}
           {{paper-divider}}
         {{/each}}

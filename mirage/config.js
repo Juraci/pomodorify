@@ -10,6 +10,7 @@ export default function() {
   this.post('/tasks');
   this.get('/tasks');
   this.get('/tasks/:id');
+  this.patch('/tasks/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

@@ -2,5 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   description: DS.attr('string'),
-  goal: DS.belongsTo('goal')
+  pomodoros: DS.attr('number'),
+  goal: DS.belongsTo('goal'),
 });

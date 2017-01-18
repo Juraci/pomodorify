@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | create goal');
 test('creating a goal', (assert) => {
   const description = 'Feel comfortable with Node.js backend development';
 
-  visit('/goals');
+  visit('/');
 
   click('#add-goal');
   fillIn('#input-goal', description);
@@ -32,7 +32,7 @@ skip('deleting a goal', (assert) => {
 test('creating a task related to a goal', (assert) => {
   server.create('goal', { description: 'Feel comfortable with Node.js development' });
   const description = 'Complete Node.js codeschool lvl 1';
-  visit('/goals');
+  visit('/');
 
   click('.goal:eq(0) button');
   click('#add-task');
@@ -42,5 +42,19 @@ test('creating a task related to a goal', (assert) => {
   andThen(() => {
     assert.equal(find('.task').length, 1);
     assert.equal(find('.task:eq(0) p').text(), description);
+  });
+});
+
+test('adding pomodoro unit to a task', (assert) =>{
+  const goal = server.create('goal', { description: 'Learn Microservices' });
+  server.create('task', { goalId: goal.id, description: 'Microservices book - Read Chapter 1' });
+
+  visit('/');
+
+  click('.goal:eq(0) button');
+  click('.task:eq(0) .add-pomodoro-unit');
+
+  andThen(() => {
+    assert.equal(find('.task:eq(0) .total-pomodoros').text(), '1');
   });
 });
