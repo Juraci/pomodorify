@@ -1,30 +1,47 @@
 import { moduleForComponent, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import wait from 'ember-test-helpers/wait';
 
 moduleForComponent('dialog-form', 'Integration | Component | dialog form', {
   integration: true
 });
 
-skip('it renders when showdialog is set to true', function(assert) {
+skip('it renders when showDialog is set to true', function(assert) {
+  assert.expect(1);
+
   this.set('closeDialog', () => {});
   this.set('onSubmitAction', () => {});
-  this.set('showCustomDialog', true);
-  this.render(hbs`{{dialog-form label='goal' inputId='goal' showDialog=showCustomDialog closeDialog=closeDialog onSubmit=onSubmitAction}}`);
+  this.set('show', true);
+  this.render(hbs`
+    <div id="paper-wormhole"></div>
+    {{dialog-form
+      label='goal'
+      inputId='goal'
+      showDialog=show
+      closeDialog=closeDialog
+      onSubmit=onSubmitAction
+    }}
+  `);
 
-  assert.equal(this.$('#goal').length, 1);
+  return wait().then(() => {
+    assert.ok(this.$('.dialog-form').length);
+  });
 });
 
-skip('it does not render when showdialog is set to false', function(assert) {
+skip('it does not render when showDialog is set to false', function(assert) {
   this.set('closeDialog', () => {});
   this.set('onSubmitAction', () => {});
-  this.set('showCustomDialog', false);
-  this.render(hbs`{{dialog-form
+  this.set('show', false);
+  this.render(hbs`
+    <div id="paper-wormhole"></div>
+    {{dialog-form
       label='Goal'
       inputId='goal'
-      showDialog=showCustomDialog
+      showDialog=show
       closeDialog=closeDialog
-      onSubmit=onSubmitAction}}`
+      onSubmit=onSubmitAction
+    }}`
   );
 
-  assert.equal(this.$('#goal'), []);
+  assert.equal(this.$('.dialog-form').length, 0);
 });
