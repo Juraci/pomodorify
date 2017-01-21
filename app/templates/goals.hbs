@@ -9,7 +9,7 @@
   {{#paper-list}}
     {{#paper-content class="md-whiteframe-z1"}}
       {{#each model as |goal|}}
-        {{list-item goal=goal onClick=(route-action "gotoTasks") }}
+        {{list-goal goal=goal onClick=(route-action "gotoTasks") }}
       {{/each}}
     {{/paper-content}}
   {{/paper-list}}

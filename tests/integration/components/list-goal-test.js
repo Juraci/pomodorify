@@ -4,7 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 let goal;
 
-moduleForComponent('list-item', 'Integration | Component | list item', {
+moduleForComponent('list-goal', 'Integration | Component | list item', {
   integration: true,
 
   beforeEach() {
@@ -21,6 +21,6 @@ test('it should render the item description', function(assert) {
   this.set('goal', goal);
   this.set('routeAction', () => {});
 
-  this.render(hbs`{{list-item goal=goal onClick=routeAction}}`);
+  this.render(hbs`{{list-goal goal=goal onClick=routeAction}}`);
   assert.equal(this.$('p').text().trim(), goal.get('description'));
 });
