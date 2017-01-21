@@ -58,3 +58,26 @@ test('adding pomodoro unit to a task', (assert) =>{
     assert.equal(find('.task:eq(0) .total-pomodoros').text(), '1');
   });
 });
+
+test('seeing total pomodoros done for a specific goal', (assert) => {
+  const goal = server.create('goal', { description: 'Feel comfortable with JavaScript development' });
+  server.create('task', {
+    goalId: goal.id,
+    description: '[Book] - Object Oriented JS - chapter 1',
+    pomodoros: 3
+  });
+
+  server.create('task', {
+    goalId: goal.id,
+    description: '[Online course] - ES2015 - level 1',
+    pomodoros: 4
+  });
+
+  visit('/');
+
+  click('.goal:eq(0) button');
+
+  andThen(() => {
+    assert.equal(find('#goal-report .total-pomodoros').text(), '7');
+  });
+});

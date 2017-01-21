@@ -1,0 +1,11 @@
+{{#paper-card id='goal-report' as |card|}}
+  {{#card.header as |header|}}
+    {{#header.text as |text|}}
+      {{#text.title}}Goal report{{/text.title}}
+      {{#text.subhead}}{{goal.description}}{{/text.subhead}}
+    {{/header.text}}
+  {{/card.header}}
+  {{#card.content}}
+      <p>Pomodoros done: <span class='total-pomodoros'>{{goal.pomodoros}}</span></p>
+  {{/card.content}}
+{{/paper-card}}
