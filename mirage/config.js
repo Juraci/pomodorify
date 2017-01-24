@@ -1,7 +1,11 @@
 export default function() {
   this.urlPrefix = 'http://localhost:3000';
 
-  this.get('/goals');
+  this.get('/goals', ({ goals }, request) => {
+    const userId = request.queryParams['filter[userId]'];
+    return goals.where({ userId });
+  });
+
   this.post('/goals');
   this.patch('/goals/:id');
   this.del('/goals/:id');
@@ -11,6 +15,14 @@ export default function() {
   this.get('/tasks');
   this.get('/tasks/:id');
   this.patch('/tasks/:id');
+
+  this.get('/users', ({ users }, request) => {
+    const email = request.queryParams['filter[email]'];
+    return users.where({ email });
+  });
+
+  this.get('/users/:id');
+  this.patch('/users/:id');
 
   // These comments are here to help you get started. Feel free to delete them.
 

@@ -1,1 +1,10 @@
-{{outlet}}
+<div class='flex-20 flex-offset-40 flex-offset-xs-0 flex-xs-100'>
+  {{paper-input block=true label="E-mail" id="email" type="email" value=email onChange=(action (mut email))}}
+  <div class='layout-row layout-align-center'>
+    {{#if spinner}}
+      {{paper-progress-circular warn=true diameter=96}}
+    {{else}}
+      {{#paper-button id="login" onClick=(route-action 'login') raised=true primary=true}}Go{{/paper-button}}
+    {{/if}}
+  </div>
+</div>

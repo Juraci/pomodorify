@@ -4,6 +4,7 @@ const { computed } = Ember;
 
 export default DS.Model.extend({
   description: DS.attr('string'),
+  user: DS.belongsTo('user'),
   tasks: DS.hasMany('task'),
 
   pomodoros: computed('tasks.@each.pomodoros', function() {

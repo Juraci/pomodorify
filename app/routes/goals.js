@@ -1,13 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  sessionManager: Ember.inject.service(),
+
   actions: {
     createGoal(description) {
       this.controller.set('showGoalDialog', false);
-      let goal = this.store.createRecord('goal', { description: description });
-      goal.save()
+      const user = this.get('sessionManager').getUser();
+      const goalRecord = this.store.createRecord('goal', {
+        user,
+        description: description
+      });
+      goalRecord.save()
         .then(() => {
           Ember.Logger.warn(`Goal ${description} saved`);
+          user.get('goals').pushObject(goalRecord);
+          return user.save();
+        })
+        .then(() => {
+          Ember.Logger.warn(`Goal ${goalRecord.get('id')} saved for user ${user.get('id')}`);
+          this.refresh();
         })
         .catch((err) => {
           Ember.Logger.error(`Error while trying to save goal:\n${err}`);
@@ -39,6 +51,7 @@ export default Ember.Route.extend({
   },
 
   model() {
-    return this.store.findAll('goal');
+    const user = this.get('sessionManager').getUser();
+    return this.store.query('goal', { filter: { userId: user.get('id') } });
   }
 });

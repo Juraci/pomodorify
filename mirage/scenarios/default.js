@@ -1,9 +1,12 @@
 export default function(server) {
   server.logging = true;
-  const goalA = server.create('goal', { description: 'Feel comfortable with Node.js development' });
-  server.create('goal', { description: 'Create a full stack JavaScript web app' });
-  const goalB = server.create('goal', { description: 'Learn hot to create continuous deployment for heroku' });
-  server.create('goal', { description: 'Create a desktop pomodoro app with Ember.js + Electron' });
+  const userA = server.create('user', { email: 'foo@bar.com' });
+  const userB = server.create('user', { email: 'master@puppets.com' });
+
+  const goalA = server.create('goal', { userId: userA.id, description: 'Feel comfortable with Node.js development' });
+  server.create('goal', { userId: userA.id, description: 'Create a full stack JavaScript web app' });
+  const goalB = server.create('goal', { userId: userB.id, description: 'Learn how to create continuous deployment for heroku' });
+  server.create('goal', { userId: userB.id, description: 'Create a desktop pomodoro app with Ember.js + Electron' });
 
   server.create('task', {
     description: 'Codeschool - Real time web with node - lvl 1',
