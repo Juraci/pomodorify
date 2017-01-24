@@ -1,10 +1,18 @@
-<div class='flex-20 flex-offset-40 flex-offset-xs-0 flex-xs-100'>
-  {{paper-input block=true label="E-mail" id="email" type="email" value=email onChange=(action (mut email))}}
-  <div class='layout-row layout-align-center'>
-    {{#if spinner}}
-      {{paper-progress-circular warn=true diameter=96}}
-    {{else}}
-      {{#paper-button id="login" onClick=(route-action 'login') raised=true primary=true}}Go{{/paper-button}}
-    {{/if}}
+<div class='layout-row flex'>
+  <div class='flex-20 flex-offset-40 flex-offset-xs-10 flex-xs-80'>
+    {{#paper-card as |card|}}
+      {{#card.content}}
+        {{#paper-form as |form|}}
+          {{form.input block=true label='Username' id='email' required=true type='email' value=email onChange=(action (mut email))}}
+            <div class='layout-row layout-align-center'>
+              {{#if spinner}}
+                {{paper-progress-circular warn=true diameter=50}}
+              {{else}}
+                {{#paper-button id="login" onClick=(route-action 'login') disabled=form.isInvalid raised=true primary=true}}Go{{/paper-button}}
+              {{/if}}
+            </div>
+        {{/paper-form}}
+      {{/card.content}}
+    {{/paper-card}}
   </div>
 </div>

@@ -1,22 +1,24 @@
-<div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-100'>
-  {{dialog-form
+<div class='layout-row layout-xs-column'>
+  <div class='flex-30 flex-offset-15 flex-offset-xs-0 flex-xs-100'>
+    {{dialog-form
     showDialog=showGoalDialog
     label='Goal'
     inputId='goal'
     closeDialog=(route-action 'closeGoalDialog')
     onSubmit=(route-action 'createGoal')
-  }}
-  {{#paper-list}}
-    {{#paper-content class="md-whiteframe-z1"}}
-      {{#each model as |goal|}}
-        {{list-goal goal=goal onClick=(route-action "gotoTasks") }}
-      {{/each}}
-    {{/paper-content}}
-  {{/paper-list}}
-  <div class='layout-row layout-align-center-center'>
-    {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+    }}
+    {{#paper-list}}
+     {{#paper-content class="md-whiteframe-z1"}}
+        {{#each model as |goal|}}
+          {{list-goal goal=goal onClick=(route-action "gotoTasks") }}
+        {{/each}}
+      {{/paper-content}}
+    {{/paper-list}}
+    <div class='layout-row layout-align-center-center'>
+      {{#paper-button id='add-goal' fab=true raised=true onClick="openGoalDialog"}}{{paper-icon "add" size=24}}{{/paper-button}}
+    </div>
   </div>
-</div>
-<div class='flex-30 flex-offset-5 flex-offset-xs-0 flex-xs-100'>
-  {{outlet}}
+  <div class='flex-30 flex-offset-5 flex-offset-xs-0 flex-xs-100'>
+    {{outlet}}
+  </div>
 </div>
