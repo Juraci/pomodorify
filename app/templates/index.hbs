@@ -3,7 +3,16 @@
     {{#paper-card as |card|}}
       {{#card.content}}
         {{#paper-form as |form|}}
-          {{form.input block=true label='Username' id='email' required=true type='email' value=email onChange=(action (mut email))}}
+          {{form.input
+            block=true
+            label='Username'
+            id='email'
+            required=true
+            type='email'
+            value=email
+            onChange=(action (mut email))
+            errors=inputErrors
+          }}
             <div class='layout-row layout-align-center'>
               {{#if spinner}}
                 {{paper-progress-circular warn=true diameter=50}}

@@ -27,6 +27,18 @@ test('a user should be able to see his goals', (assert) => {
   });
 });
 
+test('a user tries to enter an email that does not exist', (assert) => {
+  visit('/');
+
+  fillIn('#input-email', 'example@email.com');
+  triggerEvent('#input-email', 'blur');
+  click('#login');
+
+  andThen(() => {
+    assert.equal(find('.paper-input-error').text().trim(), 'You shall not pass');
+  });
+});
+
 test('creating a goal', (assert) => {
   server.create('user', { email: 'example@email.com' });
   const description = 'Feel comfortable with Node.js backend development';
