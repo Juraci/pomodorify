@@ -7,14 +7,6 @@ moduleForAcceptance('Acceptance | create goal', {
   }
 });
 
-test('a user tries to go to an url without being identified', (assert) => {
-  visit('/goals');
-
-  andThen(() => {
-    assert.equal(currentURL(), '/');
-  });
-});
-
 test('creating a goal', (assert) => {
   server.create('user', { email: 'example@email.com' });
   const description = 'Feel comfortable with Node.js backend development';

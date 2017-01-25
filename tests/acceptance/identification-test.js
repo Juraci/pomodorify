@@ -47,7 +47,7 @@ test('a user tries to go to an url without being identified', (assert) => {
   visit('/goals');
 
   andThen(() => {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/login');
   });
 });
 
@@ -56,7 +56,7 @@ test('a user already identified should not see the identification page', (assert
   window.localStorage.setItem('email', user.email);
   window.localStorage.setItem('id', user.id);
 
-  visit('/');
+  visit('/login');
 
   andThen(() => {
     assert.equal(currentURL(), '/goals');
