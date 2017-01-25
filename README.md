@@ -1,5 +1,7 @@
 # pomodorify
 
+[![Build Status](https://travis-ci.org/Juraci/pomodorify.svg?branch=master)](https://travis-ci.org/Juraci/pomodorify)
+
 Amplifies the perception of progress towards a goal, powered by the use of pomodoro technique.
 
 ## Prerequisites
