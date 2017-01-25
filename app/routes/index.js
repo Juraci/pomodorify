@@ -7,6 +7,9 @@ export default Ember.Route.extend({
     didTransition() {
       this.controller.set('inputErrors', []);
       this.controller.set('spinner', false);
+      if(this.get('sessionManager').getUser()) {
+        this.transitionTo('goals');
+      }
     },
 
     onChange(value) {

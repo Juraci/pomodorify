@@ -12,19 +12,25 @@ export default Ember.Route.extend({
   actions: {
     createGoal(description) {
       this.controller.set('showGoalDialog', false);
-      const user = this.get('sessionManager').getUser();
-      const goalRecord = this.store.createRecord('goal', {
-        user,
-        description: description
-      });
-      goalRecord.save()
-        .then(() => {
+      const userMeta = this.get('sessionManager').getUser();
+      let user;
+      let goal;
+      this.store.findRecord('user', userMeta.get('id'))
+        .then((userRecord) => {
+          user = userRecord;
+          goal = this.store.createRecord('goal', {
+            user,
+            description: description
+          });
+          return goal.save();
+        })
+        .then((savedGoal) => {
           Ember.Logger.warn(`Goal ${description} saved`);
-          user.get('goals').pushObject(goalRecord);
+          user.get('goals').pushObject(savedGoal);
           return user.save();
         })
         .then(() => {
-          Ember.Logger.warn(`Goal ${goalRecord.get('id')} saved for user ${user.get('id')}`);
+          Ember.Logger.warn(`Goal ${goal.get('id')} saved for user ${user.get('id')}`);
           this.refresh();
         })
         .catch((err) => {
@@ -58,6 +64,7 @@ export default Ember.Route.extend({
 
   model() {
     const user = this.get('sessionManager').getUser();
+    Ember.Logger.warn(`user id: ${user.get('id')}`);
     return this.store.query('goal', { filter: { userId: user.get('id') } });
   }
 });

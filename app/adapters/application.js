@@ -4,9 +4,9 @@ import Config from 'pomodorify/config/environment';
 let host;
 
 if(Config.environment === 'production') {
-  host = 'https://pomodorify-backend.herokuapp.com';
+  host = Config.APP.prodUrl;
 } else {
-  host = 'http://localhost:3000';
+  host = Config.APP.devUrl;
 }
 
 export default DS.JSONAPIAdapter.extend({
