@@ -9,9 +9,15 @@ export default Ember.Route.extend({
       this.controller.set('spinner', false);
     },
 
+    onChange(value) {
+      this.controller.set('email', value);
+      this.controller.set('inputErrors', []);
+    },
+
     login() {
       const email = this.controller.get('email');
       this.controller.set('spinner', true);
+
       this.store.query('user', { filter: { email: email }})
         .then((records) => {
           if(records.get('length') !== 1) {

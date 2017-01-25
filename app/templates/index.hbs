@@ -10,7 +10,7 @@
             required=true
             type='email'
             value=email
-            onChange=(action (mut email))
+            onChange=(route-action 'onChange')
             errors=inputErrors
           }}
             <div class='layout-row layout-align-center'>
