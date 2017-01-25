@@ -6,6 +6,12 @@
       {{#link-to 'goals'}}
         <h2>Pomodorify</h2>
       {{/link-to}}
+      <span class="flex"></span>
+      {{#if userLoggedIn}}
+        {{#paper-button onClick=(route-action 'logout') id='sign-out' raised=true}}
+          Sign Out
+        {{/paper-button}}
+      {{/if}}
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 <div class='main-content'>

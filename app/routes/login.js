@@ -9,6 +9,7 @@ export default Ember.Route.extend({
       this.controller.set('spinner', false);
       if(this.get('sessionManager').getUser()) {
         this.transitionTo('goals');
+        this.controllerFor('application').set('userLoggedIn', true);
       }
     },
 
@@ -28,6 +29,7 @@ export default Ember.Route.extend({
             this.controller.set('spinner', false);
             return;
           }
+          this.controllerFor('application').set('userLoggedIn', true);
           this.get('sessionManager').setUser(records.get('firstObject'));
           this.controller.set('inputErrors', []);
           this.transitionTo('goals');

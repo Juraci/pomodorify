@@ -5,8 +5,9 @@ export default Ember.Route.extend({
 
   beforeModel() {
     if(!this.get('sessionManager').getUser()) {
-      this.transitionTo('login');
+      return this.transitionTo('login');
     }
+    this.controllerFor('application').set('userLoggedIn', true);
   },
 
   actions: {

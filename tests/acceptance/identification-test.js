@@ -62,3 +62,16 @@ test('a user already identified should not see the identification page', (assert
     assert.equal(currentURL(), '/goals');
   });
 });
+
+test('a user should be able to sign out', (assert) => {
+  const user = server.create('user', { email: 'example@email.com' });
+  window.localStorage.setItem('email', user.email);
+  window.localStorage.setItem('id', user.id);
+
+  visit('/');
+  click('#sign-out');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/login');
+  });
+});

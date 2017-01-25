@@ -23,5 +23,10 @@ export default Ember.Service.extend({
 
   getUser() {
     return this.get('user');
+  },
+
+  forgetUser() {
+    this.set('user', null);
+    window.localStorage.clear();
   }
 });
