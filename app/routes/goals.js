@@ -3,6 +3,12 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   sessionManager: Ember.inject.service(),
 
+  beforeModel() {
+    if(!this.get('sessionManager').getUser()) {
+      this.transitionTo('index');
+    }
+  },
+
   actions: {
     createGoal(description) {
       this.controller.set('showGoalDialog', false);
