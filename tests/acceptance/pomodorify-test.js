@@ -68,7 +68,7 @@ test('adding pomodoro unit to a task', (assert) =>{
   click('.task:eq(0) .add-pomodoro-unit');
 
   andThen(() => {
-    assert.equal(find('.task:eq(0) .total-pomodoros').text(), '1');
+    assert.equal(find('.task:eq(0) .total-pomodoros').text().trim(), '1');
   });
 });
 

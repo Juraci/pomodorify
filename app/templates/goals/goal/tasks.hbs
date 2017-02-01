@@ -10,11 +10,13 @@
       {{#paper-content class="md-whiteframe-z1"}}
         {{#each model as |task|}}
           {{#paper-item class='md-3-line task'}}
-            <div class='md-avatar total-pomodoros'>{{task.pomodoros}}</div>
+            <div class='md-avatar total-pomodoros' style='margin-top:34px;'>
+              {{task.pomodoros}}
+            </div>
             <div class='md-list-item-text'>
               <p>{{task.description}}</p>
             </div>
-            {{#paper-button iconButton=true class='add-pomodoro-unit' onClick=(route-action 'addPomodoro' task)}}
+            {{#paper-button raised=true fab=true mini=true class='add-pomodoro-unit' onClick=(route-action 'addPomodoro' task)}}
               {{paper-icon 'plus-one'}}
             {{/paper-button}}
           {{/paper-item}}
